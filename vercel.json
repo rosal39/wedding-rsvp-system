@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "guest-app/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "distDir": ".next"
+      }
+    },
+    {
+      "src": "admin-app/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "distDir": ".next"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/guest/(.*)",
+      "dest": "/guest-app/$1"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "/admin-app/$1"
+    }
+  ]
+}
